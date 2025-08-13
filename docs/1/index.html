@@ -10,7 +10,8 @@
  
     <center><video width="300" height="500" controls>
   <source src="Ibecameaghost.mp4">
-</video></center> 
+</video></center> <button id="likeButton" onclick="toggleLike()">👍 Like</button>
+  <p id="likeCount">Likes: 0</p>
 <center><button onclick="window.location.href='https://venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
   <center><button id="randomButton">next video</button></center>  
@@ -29,11 +30,31 @@
       // Navigate to the selected script
       window.location.href = randomScript;
     });
+
+     let isLiked = false;
+let likeCount = 0;
+
+function toggleLike() {
+  const button = document.getElementById("likeButton");
+  const countDisplay = document.getElementById("likeCount");
+
+  if (isLiked) {
+    likeCount--;
+    button.textContent = "👍 Like";
+  } else {
+    likeCount++;
+    button.textContent = "❤️ Liked";
+  }
+
+  isLiked = !isLiked;
+  countDisplay.textContent = `Likes: ${likeCount}`;
+}
   </script>
 </body>
 
 
 </html>
+
 
 
 
