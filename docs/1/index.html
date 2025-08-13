@@ -10,7 +10,7 @@
  
     <center><video width="300" height="500" controls>
   <source src="Ibecameaghost.mp4">
-</video></center> <button id="likeButton" onclick="toggleLike()">👍 Like</button>
+</video></center>   <button id="likeButton" class="like-button">Like</button>
   <p id="likeCount">Likes: 0</p>
 <center><button onclick="window.location.href='https://venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
@@ -31,29 +31,31 @@
       window.location.href = randomScript;
     });
 
-     let isLiked = false;
-let likeCount = 0;
+     const likeButton = document.getElementById('likeButton');
 
-function toggleLike() {
-  const button = document.getElementById("likeButton");
-  const countDisplay = document.getElementById("likeCount");
+    // Check localStorage for saved state
+    const isLiked = localStorage.getItem('liked') === 'true';
 
-  if (isLiked) {
-    likeCount--;
-    button.textContent = "👍 Like";
-  } else {
-    likeCount++;
-    button.textContent = "❤️ Liked";
-  }
+    // Apply the saved state
+    if (isLiked) {
+      likeButton.classList.add('liked');
+      likeButton.textContent = 'Liked';
+    }
 
-  isLiked = !isLiked;
-  countDisplay.textContent = `Likes: ${likeCount}`;
-}
+    // Add click event listener
+    likeButton.addEventListener('click', () => {
+      const liked = likeButton.classList.toggle('liked');
+      likeButton.textContent = liked ? 'Liked' : 'Like';
+
+      // Save the state in localStorage
+      localStorage.setItem('liked', liked);
+    });
   </script>
 </body>
 
 
 </html>
+
 
 
 
