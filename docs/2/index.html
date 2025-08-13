@@ -13,10 +13,27 @@
 </video></center> 
 <center><button onclick="window.location.href='https:venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
-  <center><button onclick="window.location.href='https://jp326-design.github.io/VideoLocker/1/index.html';">next video</button></center>  
+  <center><button id="randomButton>next video</button></center>  
+  
+<script>
+    // Array of script URLs
+    const scripts = [
+      'https://jp326-design.github.io/VideoLocker/1/index.html',
+      'https://jp326-design.github.io/VideoLocker/2/index.html',
+      'script3.html'
+    ];
 
-
+    // Add event listener to the button
+    document.getElementById('randomButton').addEventListener('click', () => {
+      // Pick a random script
+      const randomScript = scripts[Math.floor(Math.random() * scripts.length)];
+      // Navigate to the selected script
+      window.location.href = randomScript;
+    });
+  </script>
+</body>
 
 </html>
+
 
 
