@@ -10,8 +10,8 @@
  
     <center><video width="300" height="500" controls>
   <source src="Ibecameaghost.mp4">
-</video></center>   <button id="likeButton" class="like-button">Like</button>
-  <p id="likeCount">Likes: 0</p>
+</video></center>  <button id="likeButton">👍 Like</button>
+  <div class="likes">Likes: <span id="likeCount">0</span></div>
 <center><button onclick="window.location.href='https://venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
   <center><button id="randomButton">next video</button></center>  
@@ -31,30 +31,27 @@
       window.location.href = randomScript;
     });
 
-     const likeButton = document.getElementById('likeButton');
+    let likes = localStorage.getItem('likes') || 0;
+    const likeCount = document.getElementById('likeCount');
+    const likeButton = document.getElementById('likeButton');
 
-    // Check localStorage for saved state
-    const isLiked = localStorage.getItem('liked') === 'true';
+    // Display the saved likes
+    likeCount.textContent = likes;
 
-    // Apply the saved state
-    if (isLiked) {
-      likeButton.classList.add('liked');
-      likeButton.textContent = 'Liked';
-    }
-
-    // Add click event listener
+    // Add event listener to the button
     likeButton.addEventListener('click', () => {
-      const liked = likeButton.classList.toggle('liked');
-      likeButton.textContent = liked ? 'Liked' : 'Like';
+      likes++;
+      likeCount.textContent = likes;
 
-      // Save the state in localStorage
-      localStorage.setItem('liked', liked);
+      // Save the updated likes to localStorage
+      localStorage.setItem('likes', likes);
     });
   </script>
 </body>
 
 
 </html>
+
 
 
 
