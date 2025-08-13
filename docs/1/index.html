@@ -10,8 +10,8 @@
  
     <center><video width="300" height="500" controls>
   <source src="Ibecameaghost.mp4">
-</video></center>  <button id="likeButton">👍 Like</button>
-  <div class="likes">Likes: <span id="likeCount">0</span></div>
+</video></center>  <button id="likeButton">Like</button>
+  <p>Total Likes: <span id="likeCount">0</span></p>
 <center><button onclick="window.location.href='https://venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
   <center><button id="randomButton">next video</button></center>  
@@ -31,26 +31,40 @@
       window.location.href = randomScript;
     });
 
-    let likes = localStorage.getItem('likes') || 0;
+  const likeButton = document.getElementById('likeButton');
     const likeCount = document.getElementById('likeCount');
-    const likeButton = document.getElementById('likeButton');
 
-    // Display the saved likes
-    likeCount.textContent = likes;
+    // Check if the user has already liked
+    const userLiked = localStorage.getItem('liked') === 'true';
 
-    // Add event listener to the button
+    if (userLiked) {
+      likeButton.classList.add('liked');
+      likeButton.disabled = true;
+    }
+
+    // Fetch initial like count from the server
+    fetch('/api/likes')
+      .then(response => response.json())
+      .then(data => {
+        likeCount.textContent = data.likes;
+      });
+
     likeButton.addEventListener('click', () => {
-      likes++;
-      likeCount.textContent = likes;
-
-      // Save the updated likes to localStorage
-      localStorage.setItem('likes', likes);
+      fetch('/api/like', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+          likeCount.textContent = data.likes;
+          likeButton.classList.add('liked');
+          likeButton.disabled = true;
+          localStorage.setItem('liked', 'true'); // Save user's like status locally
+        });
     });
   </script>
 </body>
 
 
 </html>
+
 
 
 
