@@ -49,42 +49,48 @@
       window.location.href = randomScript;
     });
 
-  const likeButton = document.getElementById('likeButton');
-    const likeCountDisplay = document.getElementById('likeCount');
-    let likes = parseInt(localStorage.getItem('likes')) || 0;
-    let isLiked = JSON.parse(localStorage.getItem('isLiked')) || false;
+   const likeButton = document.getElementById('likeButton3');
+const likeCountDisplay = document.getElementById('likeCount3');
 
-    // Update UI based on stored values
-    likeCountDisplay.textContent = `Likes: ${likes}`;
-    if (isLiked) {
-      likeButton.classList.add('liked');
-      likeButton.textContent = 'Liked';
-    }
+// Unique keys for this page
+const pageKeyLikes = 'likes_page3';
+const pageKeyIsLiked = 'isLiked_page3';
 
-    // Handle button click
-    likeButton.addEventListener('click', () => {
-      if (isLiked) {
-        likes--;
-        isLiked = false;
-        likeButton.classList.remove('liked');
-        likeButton.textContent = 'Like';
-      } else {
-        likes++;
-        isLiked = true;
-        likeButton.classList.add('liked');
-        likeButton.textContent = 'Liked';
-      }
+let likes = parseInt(localStorage.getItem(pageKeyLikes)) || 0;
+let isLiked = JSON.parse(localStorage.getItem(pageKeyIsLiked)) || false;
 
-      // Update localStorage and UI
-      localStorage.setItem('likes', likes);
-      localStorage.setItem('isLiked', isLiked);
-      likeCountDisplay.textContent = `Likes: ${likes}`;
-    });
+// Update UI based on stored values
+likeCountDisplay.textContent = `Likes: ${likes}`;
+if (isLiked) {
+  likeButton.classList.add('liked');
+  likeButton.textContent = 'Liked';
+}
+
+// Handle button click
+likeButton.addEventListener('click', () => {
+  if (isLiked) {
+    likes--;
+    isLiked = false;
+    likeButton.classList.remove('liked');
+    likeButton.textContent = 'Like';
+  } else {
+    likes++;
+    isLiked = true;
+    likeButton.classList.add('liked');
+    likeButton.textContent = 'Liked';
+  }
+
+  // Update localStorage and UI
+  localStorage.setItem(pageKeyLikes, likes);
+  localStorage.setItem(pageKeyIsLiked, isLiked);
+  likeCountDisplay.textContent = `Likes: ${likes}`;
+});
   </script>
 </body>
 
 
 </html>
+
 
 
 
