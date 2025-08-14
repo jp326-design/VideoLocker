@@ -26,8 +26,8 @@
     }
   </style> 
     <center><video width="300" height="500" autoplay loop>
-  <source src="welcome.mp4"> <button id="likeButton" class="like-button">Like</button>
-  <div id="likeCount" class="like-count">Likes: 0</div>
+  <source src="welcome.mp4"> <button id="likeButton2" class="like-button">Like</button>
+  <div id="likeCount2" class="like-count">Likes: 0</div>
 </video></center> 
 <center><button onclick="window.location.href='https://venmo.com';">Donate</button></center>
 <center><button onclick="window.location.href= 'https://jp326-design.github.io/VideoLocker/jeffreys%20channel/index.html';">Go to channel</button></center>
@@ -48,8 +48,8 @@
       window.location.href = randomScript;
     });
 
-    const likeButton = document.getElementById('likeButton');
-    const likeCountDisplay = document.getElementById('likeCount');
+    const likeButton = document.getElementById('likeButton2');
+    const likeCountDisplay = document.getElementById('likeCount2');
     let likes = parseInt(localStorage.getItem('likes')) || 0;
     let isLiked = JSON.parse(localStorage.getItem('isLiked')) || false;
 
@@ -84,6 +84,7 @@
 </body>
 
 </html>
+
 
 
 
