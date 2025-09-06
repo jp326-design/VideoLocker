@@ -28,11 +28,35 @@
 <video style="width: 250px; height: 250px;" autoplay muted loop>
       <source src="Main%20Screen/CollegeFootballweek1Prediction.mp4" controls>
     </video></button> </center>
+
+      <!-- Video Upload Input -->
+  <input type="file" id="videoInput" accept="video/*">
+  
+  <!-- Video Preview -->
+  <video id="videoPreview" controls width="500"></video>
+
+    <script>
+        document.getElementById('videoInput').addEventListener('change', function(event) {
+  const file = event.target.files[0];
+  if (file) {
+    const videoPreview = document.getElementById('videoPreview');
+    videoPreview.src = URL.createObjectURL(file);
+    videoPreview.load();
+    videoPreview.play();
+  }
+});
+    </script>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+  <input type="file" name="video" accept="video/*">
+  <button type="submit">Upload Video</button>
+</form>
     
 </body>
 
 
 </html>
+
 
 
 
